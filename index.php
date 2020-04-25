@@ -276,3 +276,12 @@ echo $user ->getSalary();*/
 }
 $user = new Employee('john','smith',320);
 echo $user ->getSurname();*/
+//10
+require_once 'Employee.php';
+$user = new Employee();
+$user ->salary = 200;
+
+$user2 = new Employee();
+$user2 ->salary = 133;
+
+echo $user2 ->salary + $user ->salary;
