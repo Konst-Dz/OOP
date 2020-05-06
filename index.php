@@ -276,12 +276,9 @@ echo $user ->getSalary();*/
 }
 $user = new Employee('john','smith',320);
 echo $user ->getSurname();*/
-//10
-require_once 'Employee.php';
-$user = new Employee();
-$user ->salary = 200;
+require_once 'Date.php';
+$date = new Date('2025-12-31');
+//echo $date->subYear(2)->getYear();
+echo $date->addDay(7)->getDay()."<br>";
+echo $date->addMonth(1)->getMonth()."<br>";
 
-$user2 = new Employee();
-$user2 ->salary = 133;
-
-echo $user2 ->salary + $user ->salary;
