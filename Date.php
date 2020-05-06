@@ -121,15 +121,21 @@
         public function subMonth($value)
         {
             // отнимает значение $value от месяца
-
-            $this->month -= $value;
+            $date = new DateTime($this->month);
+            //$interval = new DateInterval('P4M');
+            $date->sub(new DateInterval('P4M'));
+            $this->month = $date->format('m');
+            $this->date = $date->format('Y-m-d');
             return $this;
         }
 
         public function addYear($value)
         {
             // добавляет значение $value к году
-            $this->yaear += $value;
+            $date = new DateTime($this->yaear);
+            $date->add(new DateInterval("P{$value}Y"));
+            $this->yaear = $date->format('Y');
+            $this->date = $date->format('Y-m-d');
             return $this;
         }
 

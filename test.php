@@ -15,3 +15,7 @@ $date = new DateTime($date);
 $date->modify("+ $value month");
 var_dump($date);
 echo $date->format('Y-m-d');
+echo "<br>";
+echo "<hr>";
+$date = DateTime::createFromFormat('Y-m-d','01-01-2000');
+echo date('Y-m-d');
