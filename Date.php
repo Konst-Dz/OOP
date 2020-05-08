@@ -6,6 +6,8 @@
         private $month;
         private $day;
         private $date;
+        private $monthRu = [1=>'январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь' ];
+        private $weekRu = [1 => 'Понедельник' , 'Вторник' , 'Среда' , 'Четверг' , 'Пятница' , 'Суббота' , 'Воскресенье' ];
 
         public function __construct($date = null)
         {
@@ -38,20 +40,7 @@
             // переменная $lang может принимать значение ru или en
             // если эта не пуста - пусть месяц будет словом на заданном языке
             if ($lang == 'ru') {
-                $monthRu = [
-                    1=>'январь',
-                    'февраль',
-                    'март',
-                    'апрель',
-                    'май',
-                    'июнь',
-                    'июль',
-                    'август',
-                    'сентябрь',
-                    'октябрь',
-                    'ноябрь',
-                    'декабрь' ];
-                return $monthRu[$this->month] ;
+                return $this->monthRu[$this->month] ;
             }
             elseif ($lang == 'en'){
 
@@ -76,9 +65,8 @@
             // переменная $lang может принимать значение ru или en
             // если эта не пуста - пусть месяц будет словом на заданном языке
             if ($lang == 'ru') {
-                $weekRu = [1 => 'Понедельник' , 'Вторник' , 'Среда' , 'Четверг' , 'Пятница' , 'Суббота' , 'Воскресенье' ];
 
-                return $weekRu[$this->day] ;
+                return $this->weekRu[$this->day] ;
             }
             elseif ($lang == 'en'){
 
@@ -121,9 +109,9 @@
         public function subMonth($value)
         {
             // отнимает значение $value от месяца
-            $date = new DateTime($this->month);
-            //$interval = new DateInterval('P4M');
-            $date->sub(new DateInterval('P4M'));
+            $date = new DateTime($this->date);
+            $interval = new DateInterval('P'.$value.'M');
+            $date->sub($interval);
             $this->month = $date->format('m');
             $this->date = $date->format('Y-m-d');
             return $this;
@@ -132,8 +120,8 @@
         public function addYear($value)
         {
             // добавляет значение $value к году
-            $date = new DateTime($this->yaear);
-            $date->add(new DateInterval("P{$value}Y"));
+            $date = DateTime::createFromFormat('Y-m-d',$this->date);
+            $date->add(DateInterval::createFromDateString("$value years"));
             $this->yaear = $date->format('Y');
             $this->date = $date->format('Y-m-d');
             return $this;
@@ -142,7 +130,10 @@
         public function subYear($value)
         {
             // отнимает значение $value от года
-            $this->yaear -= $value;
+            $date = date_create_from_format('Y-m-d',$this->date);
+            date_sub($date, date_interval_create_from_date_string("$value years"));
+            $this->date = date_format($date,'Y-m-d');
+            $this->yaear = date_format($date,'Y');
             return $this;
         }
 
@@ -150,12 +141,13 @@
         {
             // выведет дату в указанном формате
             // формат пусть будет такой же, как в функции date
-            return date($format,strtotime($this->day,$this->month,$this->yaear));
+            $date = DateTime::createFromFormat('Y-m-d',$this->date);
+            return $date->format($format);
         }
 
         public function __toString()
         {
             // выведет дату в формате 'год-месяц-день'
-            return "$this->yaear - $this->month - $this->day";
+            return "$this->date";
         }
     }
