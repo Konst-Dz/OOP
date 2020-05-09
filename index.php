@@ -1,10 +1,11 @@
 <?php
-/*require_once 'Date.php';
-require_once 'Interval.php';*/
+require_once 'Date.php';
+require_once 'Interval.php';
 require_once 'File.php';
 require_once 'Tag.php';
-/*$date = new Date('2025-12-31');
-//echo $date->subYear(2)->getYear();
+require_once "Image.php";
+$date = new Date('2025-12-31');
+/*//echo $date->subYear(2)->getYear();
 echo $date->addDay(7)->getDay()."<br>";
 echo $date->addMonth(1)->getMonth('en')."<br>";
 echo $date->subMonth(3)->getMonth('ru')."<br>";
@@ -36,17 +37,39 @@ echo $path->copy("folder/new.txt")."<br>";
 echo $path->rename("new.txt")."<br>";
 echo $path->rename("folder/new1.txt")."<br>";*/
 
-$img = new Tag('img');
+/*$img = new Tag('img');
 echo $img->open();
 $header = new Tag('header');
 echo $header->open().'Хедер'.$header->close();
-/*$input = new Tag('input',['id'=>'salt','name'=>'stone']);
-echo $input->open();*/
+$input = new Tag('input',['id'=>'salt','name'=>'stone']);
+echo $input->open();
 $input = new Tag('input');
 echo $input->setAtrr('id','yeah')->open();
 echo $input->removeAttr('id')->open();
 echo $input->setAtrs(['id'=>'yeah','type'=>'text'])->open();
 echo $input->setAtrr('disabled',true)->open();
 echo (new Tag('input'))->setAtrr('name',1)->open();
-echo (new Tag('input'))->setAtrr('name',2)->open();
+echo (new Tag('input'))->setAtrr('name',2)->open();*/
+
+/*echo (new Tag('input'))->addClass('www')->open();
+echo (new Tag('input'))->addClass('eee')->addClass('bbb')->open();
+echo (new Tag('input'))->setAtrr('class', 'eee bbb')->addClass('kkk')->open();
+echo (new Tag('input'))->setAtrr('class', 'eee bbb')->open();
+echo (new Tag('input'))->addClass('eee')->addClass('bbb')->addClass('eee')->open();
+$input = new Tag('input');
+echo $input->setAtrr('class', 'eee zzz kkk')->removeClass('zzz')->open();
+echo $input->getAttr();
+echo $input->getElem('class');
+echo (new Tag('div'))->setText('lol')->show();*/
+
+/*$img = new Image();
+echo $img->setAtrr('src','14.jpg')->open();
+$img->setAtrr('height',200)->setAtrr('width',300);
+echo $img;*/
+
+
+
+
+
+
 
