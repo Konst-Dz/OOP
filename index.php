@@ -93,8 +93,28 @@ echo $ul->addItem((new ListItem())->setText('test'))
     ->addItem((new ListItem())->setText('test2'))->
     addItem((new ListItem())->setText('test3'));*/
 
-$form = (new Form())->setAtrs(['action'=>'','method'=>'post']);
+/*$form = (new Form())->setAtrs(['action'=>'','method'=>'post']);
 echo $form->open();
 echo (new Input())->setAtrr('name','year')->open();
 echo (new Input())->setAtrr('type','text')->open();
 echo $form->close();
+$form = (new Form())->setAtrs(['action'=>'','method'=>'post']);
+echo $form->open();
+echo (new Input())->setAtrr('name','year');
+echo (new Input())->setAtrr('type','text');
+echo $form->close();*/
+/*$form = (new Form)->setAtrs(['action' => '', 'method' => 'GET']);
+echo $form->open();
+echo (new Input)->setAtrr('name', 'year')->setAtrr('value', date('Y'));
+echo (new Input)->setAtrr('type', 'submit');
+echo $form->close();*/
+$form = (new Form)->setAtrs(['action' => '', 'method' => 'GET']);
+echo $form->open();
+echo (new Input)->setAtrr('name', 'year');
+echo (new Input)->setAtrr('name', '2');
+echo (new Input)->setAtrr('name', '3');
+echo (new Input)->setAtrr('name', '4');
+echo (new Input)->setAtrr('name', '5');
+echo (new Input)->setAtrr('type', 'submit');
+echo $form->close();
+echo array_sum($_REQUEST);

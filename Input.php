@@ -8,8 +8,20 @@ class Input extends Tag
         parent::__construct('input');
     }
 
+    public function open()
+    {
+        $inputName = $this->getElem('name');
+        if ($inputName){
+            if (isset($_REQUEST[$inputName])){
+                $value = $_REQUEST[$inputName];
+                $this->setAtrr('value',$value) ;
+            }
+        }
+        return parent::open();
+    }
+
     public function __toString()
     {
-        return parent::open();
+        return $this->open();
     }
 }
