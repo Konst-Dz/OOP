@@ -4,6 +4,13 @@ require_once 'Interval.php';
 require_once 'File.php';
 require_once 'Tag.php';
 require_once "Image.php";
+require_once 'Link.php';
+require_once 'HtmlList.php';
+require_once 'ListItem.php';
+require_once 'Ul.php';
+require_once 'Ol.php';
+require_once 'Form.php';
+require_once 'Input.php';
 $date = new Date('2025-12-31');
 /*//echo $date->subYear(2)->getYear();
 echo $date->addDay(7)->getDay()."<br>";
@@ -67,9 +74,27 @@ echo $img->setAtrr('src','14.jpg')->open();
 $img->setAtrr('height',200)->setAtrr('width',300);
 echo $img;*/
 
+/*echo (new Link())->setAtrr('href','/index.php')-> setText('index2')->show();
+echo (new Link)->setAtrr('href', '/index.php')->setAtrr('class', 'link1 link2')->setText('index')->show();
+var_dump($_SERVER['REQUEST_URI']);*/
 
+/*$list = new HtmlList('ul');
+ $list->setAtrr('class','eee')
+    ->addItem((new ListItem())->setAtrr('class','first')->setText('item1'))
+    ->addItem((new ListItem())->setText('item2'))
+    ->addItem((new ListItem())->setText('item3'));
+echo $list;
+$ol = new Ol();
+echo $ol->addItem((new ListItem())->setText('test'))
+     ->addItem((new ListItem())->setText('test2'))->
+     addItem((new ListItem())->setText('test3'));
+$ul = new Ul();
+echo $ul->addItem((new ListItem())->setText('test'))
+    ->addItem((new ListItem())->setText('test2'))->
+    addItem((new ListItem())->setText('test3'));*/
 
-
-
-
-
+$form = (new Form())->setAtrs(['action'=>'','method'=>'post']);
+echo $form->open();
+echo (new Input())->setAtrr('name','year')->open();
+echo (new Input())->setAtrr('type','text')->open();
+echo $form->close();
