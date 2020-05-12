@@ -11,6 +11,10 @@ require_once 'Ul.php';
 require_once 'Ol.php';
 require_once 'Form.php';
 require_once 'Input.php';
+require_once 'Submit.php';
+require_once 'Password.php';
+require_once 'Hidden.php';
+require_once 'Textarea.php';
 $date = new Date('2025-12-31');
 /*//echo $date->subYear(2)->getYear();
 echo $date->addDay(7)->getDay()."<br>";
@@ -108,7 +112,7 @@ echo $form->open();
 echo (new Input)->setAtrr('name', 'year')->setAtrr('value', date('Y'));
 echo (new Input)->setAtrr('type', 'submit');
 echo $form->close();*/
-$form = (new Form)->setAtrs(['action' => '', 'method' => 'GET']);
+/*$form = (new Form)->setAtrs(['action' => '', 'method' => 'GET']);
 echo $form->open();
 echo (new Input)->setAtrr('name', 'year');
 echo (new Input)->setAtrr('name', '2');
@@ -117,4 +121,32 @@ echo (new Input)->setAtrr('name', '4');
 echo (new Input)->setAtrr('name', '5');
 echo (new Input)->setAtrr('type', 'submit');
 echo $form->close();
-echo array_sum($_REQUEST);
+echo array_sum($_REQUEST);*/
+
+/*$form = (new Form)->setAtrs(['action' => 'test.php', 'method' => 'GET']);
+echo $form->open();
+echo (new Input)->setAtrr('name', 'year');
+echo new Submit;
+echo $form->close();*/
+
+/*$form = (new Form)->setAtrs(['action' => 'test.php', 'method' => 'GET']);
+echo $form->open();
+echo (new Input)   ->setAtrr('name', 'login');
+echo (new Password)->setAtrr('name', 'passw');
+echo new Submit;
+echo $form->close();*/
+
+/*$form = (new Form)->setAtrs(['action' => 'test.php', 'method' => 'GET']);
+echo $form->open();
+echo (new Hidden)->setAtrr('name', 'id')->setAtrr('value', '123');
+echo (new Input)   ->setAtrr('name', 'login');
+echo (new Password)->setAtrr('name', 'passw');
+echo new Submit;
+echo $form->close();*/
+
+$form = (new Form)->setAtrs(['action' => '', 'method' => 'GET']);
+echo $form->open();
+echo (new Input)->setAtrr('name', 'user');
+echo (new Textarea)->setAtrr('name', 'message')->setText('my mess')->show();
+echo new Submit;
+echo $form->close();
