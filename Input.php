@@ -10,12 +10,14 @@ class Input extends Tag
 
     public function open()
     {
+        if ($this->getElem('type') != 'hidden'){
         $inputName = $this->getElem('name');
         if ($inputName){
             if (isset($_REQUEST[$inputName])){
                 $value = $_REQUEST[$inputName];
                 $this->setAtrr('value',$value) ;
             }
+        }
         }
         return parent::open();
     }

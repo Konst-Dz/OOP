@@ -6,6 +6,6 @@ class Hidden extends Input
     public function __construct()
     {
         $this->setAtrr('type','hidden');
-        parent::__construct();
+        parent::__construct('input');
     }
 }

@@ -1,4 +1,5 @@
 <?php
+require_once 'TagHelper.php';
 require_once 'Date.php';
 require_once 'Interval.php';
 require_once 'File.php';
@@ -15,6 +16,10 @@ require_once 'Submit.php';
 require_once 'Password.php';
 require_once 'Hidden.php';
 require_once 'Textarea.php';
+require_once 'Checkbox.php';
+require_once 'Radio.php';
+require_once 'Select.php';
+require_once 'Option.php';
 $date = new Date('2025-12-31');
 /*//echo $date->subYear(2)->getYear();
 echo $date->addDay(7)->getDay()."<br>";
@@ -144,9 +149,52 @@ echo (new Password)->setAtrr('name', 'passw');
 echo new Submit;
 echo $form->close();*/
 
-$form = (new Form)->setAtrs(['action' => '', 'method' => 'GET']);
+/*$form = (new Form)->setAtrs(['action' => '', 'method' => 'GET']);
 echo $form->open();
 echo (new Input)->setAtrr('name', 'user');
 echo (new Textarea)->setAtrr('name', 'message')->setText('my mess')->show();
 echo new Submit;
-echo $form->close();
+echo $form->close();*/
+
+/*$form = (new Form)->setAtrs(['action' => '', 'method' => 'POST']);
+echo $form->open();
+echo (new Checkbox)->setAtrr('name', 'checkbox');
+echo (new Checkbox)->setAtrr('name', 'c2box');
+echo (new Input)->setAtrr('name', 'user');
+echo new Submit;
+echo $form->close();*/
+
+/*$form = (new Form)->setAtrs(['action' => '', 'method' => 'POST']);
+echo $form->open();
+echo (new Radio())->setAtrr('name','radio')->setAtrr('value',1);;
+echo (new Radio())->setAtrr('name','radio')->setAtrr('value',2);
+echo (new Input)->setAtrr('name', 'user');
+echo new Submit;
+echo $form->close();*/
+
+/*$select = new Select();
+echo ($select ->setAtrr('name','list'))->
+    add((new Option())->setText('Item1'))->
+    add((new Option())->setText('Item2')->setSelected())->
+    add((new Option())->setText('Item3'))->
+    show();*/
+
+/*$form = (new Form)->setAtrs(['action' => '', 'method' => 'GET']);
+echo $form->open();
+echo (new Input)->setAtrr('name', 'test');
+echo ((new Select)->setAtrr('name', 'list'))
+			->add( (new Option())->setText('item1') )
+    ->add( (new Option())->setText('item2') )
+    ->add( (new Option())->setText('item3') )
+    ->show();
+		echo new Submit;
+	echo $form->close();
+	var_dump($_REQUEST);*/
+
+$th = new TagHelper();
+echo $th->open('div') . 'text' . $th->close('div');
+$th = new TagHelper();
+echo $th->open('form', ['action' => 'test.php', 'method' => 'GET']);
+echo $th->open('input', ['name' => 'year']);
+echo $th->open('input', ['type' => 'submit']);
+echo $th->close('form');
