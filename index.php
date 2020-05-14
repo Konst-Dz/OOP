@@ -1,4 +1,5 @@
 <?php
+require_once 'FormHelper.php';
 require_once 'TagHelper.php';
 require_once 'Date.php';
 require_once 'Interval.php';
@@ -191,10 +192,29 @@ echo ((new Select)->setAtrr('name', 'list'))
 	echo $form->close();
 	var_dump($_REQUEST);*/
 
-$th = new TagHelper();
+/*$th = new TagHelper();
 echo $th->open('div') . 'text' . $th->close('div');
 $th = new TagHelper();
 echo $th->open('form', ['action' => 'test.php', 'method' => 'GET']);
 echo $th->open('input', ['name' => 'year']);
 echo $th->open('input', ['type' => 'submit']);
 echo $th->close('form');
+echo $th->show('div',123);*/
+
+$fh = new FormHelper();
+echo $fh->openForm(['action' => '', 'method' => 'GET']);
+echo $fh->input(['name' => 'year']);
+echo $fh->checkbox(['name' => 'check']);
+echo $fh->textarea(['name'=>'exp']);
+echo $fh->select(
+    ['name' => 'list', 'class' => 'eee'],
+    [
+        ['text' => 'item1', 'attrs' => ['value' => '1']],
+        ['text' => 'item2', 'attrs' => ['value' => '1', 'selected' => true]],
+        ['text' => 'item1', 'attrs' => ['value' => '1', 'class' => 'last']],
+    ],
+
+	);
+echo $fh->submit();
+echo $fh->closeForm();
+

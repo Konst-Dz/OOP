@@ -31,3 +31,9 @@ echo $diff;
 $arr = pathinfo('text.txt',PATHINFO_FILENAME);
 echo $arr;
 //var_dump($arr);
+$options = [
+    1=>['text' => 'item1', 'attrs' => ['value' => '1']],
+    ['text' => 'item2', 'attrs' => ['value' => '1', 'selected' => true]],
+    ['text' => 'item1', 'attrs' => ['value' => '1', 'class' => 'last']],
+];
+var_dump($options);

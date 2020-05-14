@@ -14,24 +14,26 @@ class TagHelper
         return "</$name>";
     }
 
-    public function show($name, $text)
+    public function show($name,$attrs=[], $text='')
     {
-        return $this->open($name) ."$text" . $this->close($name);
+        return $this->open($name,$attrs) ."$text" . $this->close($name);
     }
 
     private function getAttrsStr($attrs)
     {
         if (!empty($attrs)){
             $result = '';
-            foreach ($attrs as $key => $value) {
+
+            foreach ($attrs as $key=>$value) {
                 if ($value === true){
                     $result .= "$key";
                 }
                 else{
-                    $result = " $key = \"$value\" ";
+                    $result .= " $key = \"$value\" ";
                 }
-                return $result;
             }
+
+        return $result;
         }
         else{
             return '';
