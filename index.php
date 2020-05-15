@@ -1,4 +1,5 @@
 <?php
+require_once 'CoocieShell.php';
 require_once 'FormHelper.php';
 require_once 'TagHelper.php';
 require_once 'Date.php';
@@ -21,6 +22,9 @@ require_once 'Checkbox.php';
 require_once 'Radio.php';
 require_once 'Select.php';
 require_once 'Option.php';
+require_once 'SessionShell.php';
+require_once 'FileManipulator.php';
+require_once 'Validator.php';
 $date = new Date('2025-12-31');
 /*//echo $date->subYear(2)->getYear();
 echo $date->addDay(7)->getDay()."<br>";
@@ -201,7 +205,7 @@ echo $th->open('input', ['type' => 'submit']);
 echo $th->close('form');
 echo $th->show('div',123);*/
 
-$fh = new FormHelper();
+/*$fh = new FormHelper();
 echo $fh->openForm(['action' => '', 'method' => 'GET']);
 echo $fh->input(['name' => 'year']);
 echo $fh->checkbox(['name' => 'check']);
@@ -213,8 +217,29 @@ echo $fh->select(
         ['text' => 'item2', 'attrs' => ['value' => '1', 'selected' => true]],
         ['text' => 'item1', 'attrs' => ['value' => '1', 'class' => 'last']],
     ],
-
 	);
 echo $fh->submit();
-echo $fh->closeForm();
+echo $fh->closeForm();*/
+
+/*$csh = new CookieShell;
+$counter = ($csh->exists('count')) ? $csh->get('count') + 1 : 1 ;
+$csh->set('count',$counter, 3600*24);
+echo $csh->get('count');*/
+
+/*$sess = new SessionShell();
+echo $sess->set('test','new')->get('test');
+$sess->destroy();*/
+
+/*$files=new FileManipulator();
+$files->create('files.txt');
+$files->create('fil.txt');
+$files->delete('fil.txt');
+$files->copy('files.txt','folder/files.txt');
+$files->replace('files.txt','folder/files.txt');
+echo $files->weigh('folder/files.txt');*/
+
+$val = new Validator();
+var_dump($val->inLength('srtt',1,7));
+echo $val->isEmail('kas@mail.ru');
+echo $val->isDomain('mail.ru');
 
